@@ -46,95 +46,63 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 4-bit Count Down Counter
 ### Procedure
+1.Create a new project in QuartusII software. 2.Name the project as uc for upcounter and dc for down counter. 3.Create a new verilog hdl file in the project file. 4.Name the module as dc and uc for down counter and up counter. 5.Within the module declare input and output variables. 6.Create a loop using if-else with condition parameter as reset value. 7.End the loop. 8.End the module.
 
-1. Create a new project in Quartus2 software .
-2. Name the project as uc for upcounter and dc for down counter.
-3. Create a new verilog hdl file in the project file.
-4. Name the module declare as dc and uc for down counter and upcounter.
-5. Within the module declare input and output variables.
-6. Create a loop using if-else with condition parameter as reset.
-7. End the loop.
-8. End the module
+### PROGRAM 
 
-### PROGRAM:
 ```
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
 Developed by: JAYASRI DODDA
-RegisterNumber:212222240028
+RegisterNumber:  212222240028
 ```
-UP COUNTER:
-```
-Module upcounter(clk,a);
 
+### UP COUNTER
+```
+module sync(clk,A);
 input clk;
-
-output reg[3:0];
-
-always @(posedge clk)
-
+output reg [0:2]A;
+always@(posedge clk)
 begin
-
-a[3]=(a[2]&a[1]&a[0])^a[3];
-
-a[2]=(a[1]&a[0])^a[2];
-
-a[1]=(a[0]^a[1]);
-
-a[0]= ^a[0];
-
-end
-
+    A[0]=(((A[1])&(A[2]))^A[0]);
+	 A[1]=(A[2])^(A[1]);
+	 A[2]=1^A[2];
+end 
 endmodule
 ```
-DOWN COUNTER:
+### DOWN COUNTER
 ```
-Module downcounter(clk,a);
-
+module exp6a(clk,A);
 input clk;
-
-output reg[3:0]a;
-
-always @(posedge clk)
-
+output reg [0:2]A;
+always@(posedge clk)
 begin
-
-a[3]=(~a[2]&~a[1]&~a[0])^a[3];
-
-a[2]=(~a[1]&~a[0])^a[2];
-
-a[1]=(~a[0]^a[1]);
-
-a[0]=1^a[0];
-
-end
-
-endmodule
+    A[0]=(((~A[1])&(~A[2]))^(A[0]));
+	 A[1]=(~A[2])^(A[1]);
+	 A[2]=1^A[2];
+end 
+endmodule 
 ```
-## RTL LOGIC UP COUNTER AND DOWN COUNTER:  
+### RTL LOGIC UP COUNTER AND DOWN COUNTER  
+### UP COUNTER
+![image](https://github.com/Aishwarya-sankar/Exp-7-Synchornous-counters-/assets/121418444/7f9ce1ce-d254-4bf7-b6fd-c668cc5e9c72)
 
-### UP COUNTER: 
+### DOWN COUNTER
+![image](https://github.com/Aishwarya-sankar/Exp-7-Synchornous-counters-/assets/121418444/da8b19bf-bb6f-4644-b46d-658fc58f1043)
 
-![242660671-76928032-31f8-4e83-8fb9-22c954f8a4c6](https://github.com/divyavarshiniEEE/Exp-7-Synchornous-counters-/assets/128978058/bf2999c0-6bec-47f6-915f-b636aeda4576)
+### TIMING DIGRAMS FOR COUNTER  
+### UP COUNTER
+![image](https://github.com/Aishwarya-sankar/Exp-7-Synchornous-counters-/assets/121418444/cd3fbd22-8dfc-4a96-8b01-0905ddaf2397)
 
-### DOWN COUNTER:
-![242660795-9e1b6f36-edf9-4ed1-a9e5-a330dd469feb](https://github.com/divyavarshiniEEE/Exp-7-Synchornous-counters-/assets/128978058/f9f7346d-aaf2-470e-9547-9c05a71689b3)
+### DOWN COUNTER
+![image](https://github.com/Aishwarya-sankar/Exp-7-Synchornous-counters-/assets/121418444/565a7f68-0a41-41fc-a818-ba32bce5b1ef)
 
 
-## TIMING DIGRAMS: 
+### TRUTH TABLE 
+### UP COUNTER
+![image](https://github.com/Aishwarya-sankar/Exp-7-Synchornous-counters-/assets/121418444/32e6c4c3-283d-41ec-8f1a-b4745dc1dd58)
 
-### UP COUNTER:
-![242660912-86d2e86c-f278-4c14-9bd7-b6c749a7ecf7](https://github.com/divyavarshiniEEE/Exp-7-Synchornous-counters-/assets/128978058/ba044594-b7e9-4289-9580-cf048d003b85)
-### DOWN COUNTER:
-![242660959-aeac3ff9-c4b0-4c5c-9d62-cf86b2e3d984](https://github.com/divyavarshiniEEE/Exp-7-Synchornous-counters-/assets/128978058/10d8818b-ae16-4829-88b0-c6586fe01ba8)
+### DOWN COUNTER
+![image](https://github.com/Aishwarya-sankar/Exp-7-Synchornous-counters-/assets/121418444/66ac536d-6415-466d-acbb-7f6464533cae)
 
-## TRUTH TABLE 
-
-### UP COUNTER:
-
-![243097359-29043292-8693-4128-8a2d-c584a451ed5e](https://github.com/divyavarshiniEEE/Exp-7-Synchornous-counters-/assets/128978058/fe5c6e0f-b1d0-49ba-97fc-a9843ff1e42a)
-### DOWN COUNTER:
-
-![243097385-e1253bba-7624-4f05-960f-4bbe69d99cea](https://github.com/divyavarshiniEEE/Exp-7-Synchornous-counters-/assets/128978058/03ace885-dd9a-47ac-8ecd-392886805052)
-
-## RESULTS:
-Thus synchornous counters up counter and down counter circuit are studied and the truth table for different logic gates are verified.
+### RESULTS 
+Thus Synchornous counters up counter and down counter circuit are studied and the truth table for different logic gates are verified.
